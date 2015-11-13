@@ -5,6 +5,7 @@ Rails.application.routes.draw do
           resources :employees, only: [:create, :destroy, :view, :update]
           resources :shifts, only: [:create, :destroy, :view, :update]
           resources :holidays, only: [:create, :destroy, :view, :update]
+          resources :rosters, only: [:create, :destroy, :view, :update]
           root 'static_pages#home'
 
           get 'help'    => 'static_pages#help'
