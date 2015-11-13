@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151113210219) do
+ActiveRecord::Schema.define(version: 20151113212624) do
 
   create_table "employees", force: :cascade do |t|
     t.string   "name"
@@ -24,6 +24,16 @@ ActiveRecord::Schema.define(version: 20151113210219) do
   end
 
   add_index "employees", ["user_id"], name: "index_employees_on_user_id"
+
+  create_table "holidays", force: :cascade do |t|
+    t.date     "start_date"
+    t.date     "finish_date"
+    t.integer  "employee_id"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+  end
+
+  add_index "holidays", ["employee_id"], name: "index_holidays_on_employee_id"
 
   create_table "shifts", force: :cascade do |t|
     t.string   "start_time"
