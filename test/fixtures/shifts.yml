@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  start_time: MyString
+  finish_time: MyString
+  total_hours: 9.99
+  user_id: 
+
+two:
+  start_time: MyString
+  finish_time: MyString
+  total_hours: 9.99
+  user_id: 
