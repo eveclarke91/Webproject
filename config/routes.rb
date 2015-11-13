@@ -2,6 +2,7 @@ Rails.application.routes.draw do
   
 
           resources :users
+          resources :employees, only: [:create, :destroy, :view, :update]
           root 'static_pages#home'
 
           get 'help'    => 'static_pages#help'
