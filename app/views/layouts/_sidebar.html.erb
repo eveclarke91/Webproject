@@ -1,0 +1,9 @@
+<% if logged_in? %>
+<div class="col-sm-3 col-md-2 sidebar">
+	<ul class="nav nav-sidebar">
+	    <li class="sidebar_Employee"><%= link_to "Employees", "/employees" %></li>
+	      <li class="sidebar_Shift"><%= link_to "Shifts", "#" %></li>
+	      <li class="sidebar_Roster"><%= link_to "Rosters", "#" %></li>
+  	</ul>
+  	</div>
+<% end %>

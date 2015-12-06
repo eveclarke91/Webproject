@@ -1,3 +1,6 @@
+<% content_for(:sidebar) do %>
+<%= render :partial => "layouts/sidebar" %>
+<% end %>
 <% provide(:title, "Log in") %>
 <% if logged_in? %>
       # Links for logged-in users
