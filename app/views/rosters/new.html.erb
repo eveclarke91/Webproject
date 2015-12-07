@@ -1,0 +1,25 @@
+<% provide(:title, 'Create Roster') %>
+    <h1>Create a Roster</h1>
+
+    <div class="row">
+      <div class="col-md-6 col-md-offset-3">
+        <%= form_for(@roster) do |f| %>
+
+          <%= f.label :Choose_Date %>
+          <%= f.text_field :begin_date %>
+
+
+          <%= f.label :employee_id %><br />
+          <%= f.collection_select(:employee_id, Employee.all, :id, :name, {}, {:class => "foo"} ) %>
+          <br>
+          
+          <%= f.label :shift_id %><br />
+          <%= f.collection_select(:shift_id, Shift.all, :id, :start_time, {}, {:class => "foo"}) %>
+          <br>
+
+
+         
+          <%= f.submit "Create Roster", class: "btn btn-primary" %>
+        <% end %>
+      </div>
+    </div>

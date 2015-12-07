@@ -20,6 +20,14 @@ Rails.application.routes.draw do
           get 'shifts'     => 'shifts#new'
           get '/shifts'    => 'shifts#new'
           get '/viewShifts'=> 'shifts#index'
+          get 'holidays'   => 'holidays#new'
+          get '/holidays'  => 'holidays#new'
+          get '/viewHolidays' => 'holidays#index'
+
+
+          get 'rosters'    => 'rosters#new'
+          get '/rosters'   => 'rosters#new'
+          get '/viewRosters' => 'rosters#index'
           get    'login'   => 'sessions#new'
           post   'login'   => 'sessions#create'
           delete 'logout'  => 'sessions#destroy'

@@ -1,0 +1,25 @@
+<% provide(:title, 'Add Holiday') %>
+    <h1>Add Holiday for Employee</h1>
+
+    <div class="row">
+      <div class="col-md-6 col-md-offset-3">
+        <%= form_for(@holiday) do |f| %>
+
+
+          <%= f.label :employee_id %><br />
+          <%= f.collection_select(:employee_id, Employee.all, :id, :name, {}, {:class => "foo"} ) %>
+          <br>
+          
+          <%= f.label :start_date %>
+          <%= f.text_field :start_date %>
+
+          <%= f.label :finish_date %>
+          <%= f.text_field :finish_date %>
+
+          
+
+
+          <%= f.submit "Create Holiday", class: "btn btn-primary" %>
+        <% end %>
+      </div>
+    </div>
