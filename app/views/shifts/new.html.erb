@@ -1,0 +1,21 @@
+<% provide(:title, 'Create Shift') %>
+    <h1>Add a new Shift</h1>
+
+    <div class="row">
+      <div class="col-md-6 col-md-offset-3">
+        <%= form_for(@shift) do |f| %>
+        
+          <%= f.label :Start_Time %>
+          <%= f.text_field :start_time %>
+
+          <%= f.label :Finish_Time%>
+          <%= f.text_field :finish_time %>
+
+          <%= f.label :Total_Number_of_hours_worked %>
+          <%= f.text_field :total_hours %>
+
+         
+          <%= f.submit "Create Shift", class: "btn btn-primary" %>
+        <% end %>
+      </div>
+    </div>

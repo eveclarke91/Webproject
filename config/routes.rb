@@ -6,6 +6,7 @@ Rails.application.routes.draw do
           resources :shifts, only: [:create, :destroy, :view, :update]
           resources :holidays, only: [:create, :destroy, :view, :update]
           resources :rosters, only: [:create, :destroy, :view, :update]
+
           root 'static_pages#home'
 
           get 'help'       => 'static_pages#help'
@@ -15,6 +16,10 @@ Rails.application.routes.draw do
           get '/signup'    => 'users#new'
           get 'employees'  => 'employees#new'
           get '/employees' => 'employees#new'
+          get '/viewEmployees'   => 'employees#index'
+          get 'shifts'     => 'shifts#new'
+          get '/shifts'    => 'shifts#new'
+          get '/viewShifts'=> 'shifts#index'
           get    'login'   => 'sessions#new'
           post   'login'   => 'sessions#create'
           delete 'logout'  => 'sessions#destroy'
