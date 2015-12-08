@@ -6,5 +6,8 @@
           <%= link_to "delete", shift, method: :delete,
                                            data: { confirm: "You sure?" } %>
         <% end %></td>
-    
+    <td><% if current_user?(shift.user) %>
+      <%= link_to("Edit Shift", edit_shift_path(shift.id)) %>
+
+        <% end %></td>
   </tr>

@@ -7,5 +7,9 @@
           <%= link_to "delete", holiday, method: :delete,
                                            data: { confirm: "You sure?" } %>
         <% end %></td>
+    <td><% if current_user?(holiday.user) %>
+      <%= link_to("Edit Holiday", edit_holiday_path(holiday.id)) %>
+
+        <% end %></td>    
  
   </tr>

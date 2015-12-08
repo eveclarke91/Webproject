@@ -7,11 +7,15 @@
     <td><% if current_user?(employee.user) %>
           <%= link_to "delete", employee, method: :delete,
                                            data: { confirm: "You sure?" } %>
-        <% end %></td>
+
+     <%end%>  </td>
     <td><% if current_user?(employee.user) %>
-          <%= link_to "edit", employee, method: :edit %>
-                                       
+      <%= link_to("Edit employee", edit_employee_path(employee.id)) %>
+
         <% end %></td>
  
   </tr>
 
+
+
+  

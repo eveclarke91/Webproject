@@ -8,5 +8,8 @@
           <%= link_to "delete", roster, method: :delete,
                                            data: { confirm: "You sure?" } %>
         <% end %></td>
- 
+    <td><% if current_user?(roster.user) %>
+      <%= link_to("Edit Roster", edit_roster_path(roster.id)) %>
+
+        <% end %></td>
   </tr>

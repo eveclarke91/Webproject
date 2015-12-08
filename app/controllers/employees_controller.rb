@@ -45,19 +45,38 @@
       end
 
       def edit
-        @employee = Employee.find(params[:id])
-
+       @employee = Employee.find(params[:id])
+       #@employees = Employees.all
       end
 
-      def update
-      @employee = Employee.find(params[:id])
-     if @employee.update_attributes(employee_params)
+      #ef update
+     #@employee = Employee.find(params[:id])
+     #f @employee.update_attributes(employee_params)
       # Handle a successful update.
-     else
-      render 'edit'
-    end
-  end
+     #else
+      #render 'edit'
+    #end
+  #end
 
+      def update
+        @employee = Employee.find(params[:id])
+  
+        if @employee.update_attributes(employee_param)
+        redirect_to :action => 'index'  #:id => @employee
+      else
+        @employees = employee.all
+        render :action => 'edit'
+      end
+   
+      end
+
+
+
+
+
+   def employee_param
+    params.require(:employee).permit(:name, :address, :number, :rate_of_pay)
+   end
 
        def destroy
             @employee.destroy

@@ -28,6 +28,35 @@ class ShiftsController < ApplicationController
       end
 
 
+      def edit
+       @shift = Shift.find(params[:id])
+      
+      end
+
+     def update
+        @shift = Shift.find(params[:id])
+  
+        if @shift.update_attributes(shift_param)
+        redirect_to :action => 'index'  
+      else
+        @shifts = shift.all
+        render :action => 'edit'
+      end
+   
+      end
+
+
+
+
+
+   def shift_param
+    params.require(:shift).permit(:start_time, :finish_time, :total_hours)
+   end
+
+
+
+
+
       def destroy
              @shift = Shift.find(params[:id])
           if @shift.present?
@@ -40,6 +69,5 @@ class ShiftsController < ApplicationController
       def view
       end
 
-      def update
-      end
+    
     end

@@ -31,8 +31,28 @@ class RostersController < ApplicationController
       end 
     end
 
+       def edit
+       @roster= Roster.find(params[:id])
+       
+      end
 
-    
+    def update
+        @roster = Roster.find(params[:id])
+  
+        if @roster.update_attributes(roster_param)
+        redirect_to :action => 'index'  
+      else
+        @rosters = roster.all
+        render :action => 'edit'
+      end
+   
+      end
+
+
+   def roster_param
+    params.require(:roster).permit(:begin_date, :employee_id, :shift_id)
+   end
+
 
 
      
@@ -45,13 +65,5 @@ class RostersController < ApplicationController
           end
           
 
-           
-      
 
-
-      def view
       end
-
-      def update
-      end
-    end

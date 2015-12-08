@@ -30,6 +30,10 @@ class HolidaysController < ApplicationController
       end
     end
 
+      def edit
+       @holiday = Holiday.find(params[:id])
+       
+      end
 
 
       def destroy
@@ -42,7 +46,21 @@ class HolidaysController < ApplicationController
 
 
       def update
+        @holiday = Holiday.find(params[:id])
+  
+        if @holiday.update_attributes(holiday_param)
+        redirect_to :action => 'index'  
+      else
+        @holidays = holiday.all
+        render :action => 'edit'
       end
+   
+      end
+
+
+      def holiday_param
+     params.require(:holiday).permit(:employee_id, :start_date, :finish_date)
+     end
 
       def view
       end
