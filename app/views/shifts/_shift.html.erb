@@ -2,5 +2,9 @@
     <td><%= shift.start_time %></td>
     <td><%= shift.finish_time %></td>
     <td><%= shift.total_hours %></td>
+    <td><% if current_user?(shift.user) %>
+          <%= link_to "delete", shift, method: :delete,
+                                           data: { confirm: "You sure?" } %>
+        <% end %></td>
     
   </tr>

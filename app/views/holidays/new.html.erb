@@ -7,7 +7,7 @@
 
 
           <%= f.label :employee_id %><br />
-          <%= f.collection_select(:employee_id, Employee.all, :id, :name, {}, {:class => "foo"} ) %>
+          <%= f.collection_select(:employee_id, current_user.employees, :id, :name, {}, {:class => "foo"} ) %>
           <br>
           
           <%= f.label :start_date %>

@@ -4,5 +4,14 @@
     <td><%= employee.address %></td>
     <td><%= employee.number %></td>
     <td><%= employee.rate_of_pay %></td>
+    <td><% if current_user?(employee.user) %>
+          <%= link_to "delete", employee, method: :delete,
+                                           data: { confirm: "You sure?" } %>
+        <% end %></td>
+    <td><% if current_user?(employee.user) %>
+          <%= link_to "edit", employee, method: :edit %>
+                                       
+        <% end %></td>
  
   </tr>
+

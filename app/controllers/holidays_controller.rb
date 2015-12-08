@@ -6,7 +6,7 @@ class HolidaysController < ApplicationController
       end
 
       def index
-        @holidays = Holiday.all
+        @holidays = current_user.holidays
        end
 
       def create
@@ -33,7 +33,13 @@ class HolidaysController < ApplicationController
 
 
       def destroy
-      end
+             @holiday = Holiday.find(params[:id])
+          if @holiday.present?
+             @holiday.destroy
+          end
+              redirect_to root_url
+          end
+
 
       def update
       end

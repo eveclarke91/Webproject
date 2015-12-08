@@ -7,7 +7,7 @@ class ShiftsController < ApplicationController
       end
 
       def index
-        @shifts = Shift.all
+        @shifts = current_user.shifts
         end
 
 
@@ -29,7 +29,13 @@ class ShiftsController < ApplicationController
 
 
       def destroy
-      end
+             @shift = Shift.find(params[:id])
+          if @shift.present?
+             @shift.destroy
+          end
+              redirect_to root_url
+          end
+
 
       def view
       end

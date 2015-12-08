@@ -10,11 +10,11 @@
 
 
           <%= f.label :employee_id %><br />
-          <%= f.collection_select(:employee_id, Employee.all, :id, :name, {}, {:class => "foo"} ) %>
+          <%= f.collection_select(:employee_id, current_user.employees, :id, :name, {}, {:class => "foo"} ) %>
           <br>
           
           <%= f.label :shift_id %><br />
-          <%= f.collection_select(:shift_id, Shift.all, :id, :start_time, {}, {:class => "foo"}) %>
+          <%= f.collection_select(:shift_id, current_user.shifts, :id, :start_time, {}, {:class => "foo"}) %>
           <br>
 
 

@@ -3,6 +3,9 @@
     <td><%= holiday.employee.name %></td>
     <td><%= holiday.start_date %></td>
     <td><%= holiday.finish_date %></td>
-    
+    <td><% if current_user?(holiday.user) %>
+          <%= link_to "delete", holiday, method: :delete,
+                                           data: { confirm: "You sure?" } %>
+        <% end %></td>
  
   </tr>

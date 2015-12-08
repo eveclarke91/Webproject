@@ -1,5 +1,6 @@
  class EmployeesController < ApplicationController
      before_action :logged_in_user, only: [:create, :destroy, :view, :update]
+     before_action :correct_user,   only: :destroy  # NEW LINE
 
       def new
         @employee = Employee.new
@@ -7,13 +8,14 @@
 
 
         def index
-        @employees = Employee.all
+        @employees = current_user.employees
         end
 
       
 
 
       def create
+
         secure_params = params.require(:employee).permit(:name, :address, :number, :rate_of_pay)
 
         #@employee = current_user.employees.build(secure_params)
@@ -36,31 +38,50 @@
 
   
 
-#def create
-    #secure_params = params.require(:film).                                         
-                 #     permit(:name, :description, :duration,:genre_id,:director_id,:threeD)
-   # @film = Film.new(secure_params)
-   # if ( Director.find(params[:film][:director_id]) and   
-         #Genre.find(params[:film][:genre_id]) and 
-      #  #    @film.save )
-      #  redirect_to action: 'index', notice: 'Film was successfully created.'
-   # else
-      #  render action: "new" 
-   # end
-  #end
-        
 
-      #def show
-        #@employee = Employee.find(params[:id])
+      def show
+        @employee = Employee.find(params[:id])
       
-      #end
-
-      def destroy
       end
+
+      def edit
+        @employee = Employee.find(params[:id])
+
+      end
+
+      def update
+      @employee = Employee.find(params[:id])
+     if @employee.update_attributes(employee_params)
+      # Handle a successful update.
+     else
+      render 'edit'
+    end
+  end
+
+
+       def destroy
+            @employee.destroy
+            redirect_to root_url
+          end
+
+           
+      private
+
+            def correct_user
+              @employee = current_user.employees.find_by(id: params[:id])
+              redirect_to root_url if @employee.nil?
+            end
+
+ private
+
+    def employee_params
+      params.require(:employee).permit(:name, :address, :number, :rate_of_pay)
+    end
+      
+
 
       def view
       end
 
-      def update
-      end
+      
     end

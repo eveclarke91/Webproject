@@ -1,0 +1,27 @@
+<% provide(:title, "Edit employee") %>
+<h1>Update Employee Details</h1>
+
+<div class="row">
+  <div class="col-md-6 col-md-offset-3">
+    <%= form_for(@employee) do |f| %>
+      
+
+      <%= f.label :name %>
+          <%= f.text_field :name %>
+
+          <%= f.label :address %>
+          <%= f.text_field :address %>
+
+          <%= f.label :Phone %>
+          <%= f.text_field :number %>
+
+          <%= f.label :rate_of_pay %>
+          <%= f.text_field :rate_of_pay %>
+
+
+      <%= f.submit "Save changes", class: "btn btn-primary" %>
+    <% end %>
+
+    
+  </div>
+</div>

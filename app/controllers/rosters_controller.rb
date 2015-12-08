@@ -6,11 +6,11 @@ class RostersController < ApplicationController
       end
 
       def index
-        @rosters = Roster.all
+        @rosters = current_user.rosters
        end
 
       def create
-        secure_params = params.require(:roster).permit(:begin_date, :employee_id, :start_time, :finish_time)
+        secure_params = params.require(:roster).permit(:begin_date, :employee_id, :shift_id)
 
         
         @roster = current_user.rosters.build(secure_params)
@@ -28,13 +28,26 @@ class RostersController < ApplicationController
            # Handle a successful save.
         else
             render action: "new"     
-      end
+      end 
     end
-  
 
 
-      def destroy
-      end
+    
+
+
+     
+         def destroy
+             @roster = Roster.find(params[:id])
+          if @roster.present?
+             @roster.destroy
+          end
+              redirect_to root_url
+          end
+          
+
+           
+      
+
 
       def view
       end

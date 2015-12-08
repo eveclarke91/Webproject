@@ -4,5 +4,9 @@
     <td><%= roster.employee.name %></td>
     <td><%= roster.shift.start_time %></td>
     <td><%= roster.shift.finish_time %></td>
+    <td><% if current_user?(roster.user) %>
+          <%= link_to "delete", roster, method: :delete,
+                                           data: { confirm: "You sure?" } %>
+        <% end %></td>
  
   </tr>
