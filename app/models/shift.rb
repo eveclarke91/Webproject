@@ -3,8 +3,8 @@ class Shift < ActiveRecord::Base
   has_many :rosters, dependent: :destroy
   validates :user_id, presence: true
   validates :total_hours, presence: true, numericality: true
-  validates :start_time, presence: true, numericality: true
-  validates :finish_time, presence: true, numericality: true
+  validates :start_time, presence: true
+  validates :finish_time, presence: true
 
  #before :save, :set_fullshift
 #

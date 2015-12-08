@@ -27,7 +27,8 @@ class RostersController < ApplicationController
           #redirect_to root_url
            # Handle a successful save.
         else
-            render action: "new"     
+            
+             render action: "new"     
       end 
     end
 
@@ -61,7 +62,7 @@ class RostersController < ApplicationController
           if @roster.present?
              @roster.destroy
           end
-              redirect_to root_url
+              redirect_to :action => 'index'#root_url
           end
           
 

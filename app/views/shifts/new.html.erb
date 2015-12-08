@@ -1,18 +1,36 @@
 <% provide(:title, 'Create Shift') %>
     <h1>Add a new Shift</h1>
 
-    <div class="row">
+    <div class="row"> 
       <div class="col-md-6 col-md-offset-3">
         <%= form_for(@shift) do |f| %>
-        <%= render 'shared/error_messages', object: f.object %> 
-          <%= f.label :Start_Time %>
-          <%= f.text_field :start_time %>
+        <%= render 'shared/object_error_messages', object: f.object %> 
+        
 
+        
+            
+ 
+        
+          <%= f.label :Start_Time %>
+          <div class="input-group bootstrap-timepicker timepicker">
+          <%= f.text_field :start_time, id: "timepicker1", class: "form-control input-small"%>
+          <span class="input-group-addon"><i class="glyphicon glyphicon-time"></i></span>
+        </div>
+      
           <%= f.label :Finish_Time%>
-          <%= f.text_field :finish_time %>
+          <div class="input-group bootstrap-timepicker timepicker">
+          <%= f.text_field :finish_time, id: "timepicker2", class: "form-control input-small"%>
+          <span class="input-group-addon"><i class="glyphicon glyphicon-time"></i></span>
+        </div>
+         <script type="text/javascript">
+            $('#timepicker1').timepicker();
+            $('#timepicker2').timepicker();
+
+        </script>
+        <br>
 
           <%= f.label :Total_Number_of_hours_worked %>
-          <%= f.text_field :total_hours %>
+          <%= f.text_field :total_hours, class: "form-control" %>
 
          
           <%= f.submit "Create Shift", class: "btn btn-primary" %>

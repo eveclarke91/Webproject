@@ -1,6 +1,4 @@
-<h1>All Rosters</h1>
-
-
+<% if @feed_items %>
 <table class="table table-striped table-bordered">
 	<thead>
   <tr>
@@ -13,13 +11,10 @@
   </tr>
   </thead>
 <tbody>
-
- <%= render @rosters %>
-
-</tbody>
+    <%= render @feed_items %>
+    </tbody>
 
 </table>
 
 <br />
-
-<%= link_to " Create a Roster", "/rosters" %></li>
+<% end %>

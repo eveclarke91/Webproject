@@ -80,7 +80,7 @@
 
        def destroy
             @employee.destroy
-            redirect_to root_url
+            redirect_to :action => 'index'#root_url
           end
 
            

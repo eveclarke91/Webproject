@@ -41,7 +41,7 @@ class HolidaysController < ApplicationController
           if @holiday.present?
              @holiday.destroy
           end
-              redirect_to root_url
+              redirect_to :action => 'index'#root_url
           end
 
 

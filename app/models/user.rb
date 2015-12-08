@@ -42,5 +42,10 @@
           update_attribute(:remember_digest, nil)
        end
 
+        def feed
+                Roster.where("user_id = ?", id)
+            end
+        
+
     end
    

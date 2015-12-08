@@ -1,7 +1,11 @@
 class StaticPagesController < ApplicationController
-  def home
-        #@employee = current_user.employees.build if logged_in? 
-      end
+
+	def home
+	if logged_in?
+	    @roster  = current_user.rosters.build
+	    @feed_items = current_user.feed
+	 end
+	end
 
   def help
   end

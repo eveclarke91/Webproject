@@ -1,20 +1,38 @@
 <% provide(:title, 'Edit Holiday') %>
-    <h1>Update Holiady Details</h1>
+    <h1>Update Holiday Details</h1>
 
     <div class="row">
+      <script type="text/javascript">
+        $(document).ready(function(){
+          $('#date1').datepicker({
+            format: "yyyy-mm-dd",
+            startDate: "today",
+            todayHighlight: true
+          });
+          $('#date2').datepicker({
+            format: "yyyy-mm-dd",
+            startDate: "today",
+            todayHighlight: true
+          });
+        });
+      </script>
       <div class="col-md-6 col-md-offset-3">
         <%= form_for(@holiday) do |f| %>
+        <%= render 'shared/object_error_messages', object: f.object %> 
+        
 
 
           <%= f.label :employee_id %><br />
-          <%= f.collection_select(:employee_id, current_user.employees, :id, :name, {}, {:class => "foo"} ) %>
-          <br>
+          <%= f.collection_select(:employee_id, current_user.employees, :id, :name, {}, {:class => "form-control"} ) %>
+        
           
           <%= f.label :start_date %>
-          <%= f.text_field :start_date %>
+          <%= f.text_field :start_date , id: 'date1' , class: "form-control"%>
+
 
           <%= f.label :finish_date %>
-          <%= f.text_field :finish_date %>
+          <%= f.text_field :finish_date , id: 'date2' , class: "form-control"%>
+
 
           
 

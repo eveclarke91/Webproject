@@ -1,18 +1,44 @@
 <% if logged_in? %>
-<div class="col-sm-3 col-md-2 sidebar">
-	<ul class="nav nav-sidebar">
-	    <li class="sidebar_CreateEmployee"><%= link_to " Create a Employee", "/employees" %></li>
-	    <li class="sidebar_ViewEmployee"><%= link_to " View all Employees", "/viewEmployees" %></li>
+<div >
 
-	      <li class="sidebar_CreateShift"><%= link_to "Create a Shift", "/shifts" %></li>
-	      <li class="sidebar_ViewShift"><%= link_to "View all Shifts", "/viewShifts" %></li>
-
-
-	      <li class="sidebar_CreateRoster"><%= link_to "Create a Roster", "/rosters" %></li>
- 		 <li class="sidebar_ViewRoster"><%= link_to "View all Rosters", "/viewRosters" %></li>
- 		   
- 		   <li class="sidebar_CreateHoliday"><%= link_to " Create a holiday for a Employee", "/holidays" %></li>
- 		   <li class="sidebar_ViewHoliday"><%= link_to " View All Employee Holidays", "/viewHolidays" %></li>
-  	</ul>
+	<ul class="nav nav-pills nav-stacked" style="max-width: 300px;">	
+		<li class="dropdown">
+			<a class="dropdown-toggle" data-toggle="dropdown" href="#" aria-expanded="false">
+				Employee<span class="caret"></span>
+			</a>
+			<ul class="dropdown-menu">
+				<li><%= link_to " Create an Employee", "/employees" %></li>
+				<li><%= link_to " View all Employees", "/viewEmployees" %></li>
+			</ul>
+		</li>
+		<li class="dropdown">
+			<a class="dropdown-toggle" data-toggle="dropdown" href="#" aria-expanded="false">
+				Shift<span class="caret"></span>
+			</a>
+			<ul class="dropdown-menu">
+				<li><%= link_to "Create a Shift", "/shifts" %></li>
+				<li><%= link_to "View all Shifts", "/viewShifts" %></li>
+			</ul>
+		</li>
+		<li class="dropdown">
+			<a class="dropdown-toggle" data-toggle="dropdown" href="#" aria-expanded="false">
+				Roster<span class="caret"></span>
+			</a>
+			<ul class="dropdown-menu">
+				<li><%= link_to "Create a Roster", "/rosters" %></li>
+				<li><%= link_to "View all Rosters", "/viewRosters" %></li>
+			</ul>
+			</li>
+			<li class="dropdown">
+				<a class="dropdown-toggle" data-toggle="dropdown" href="#" aria-expanded="false">
+					Holiday<span class="caret"></span>
+				</a>
+				<ul class="dropdown-menu">
+					<li><%= link_to " Create a holiday for a Employee", "/holidays" %></li>
+					<li><%= link_to " View All Employee Holidays", "/viewHolidays" %></li>
+				</ul>
+			</li>
+		</ul>
+	
   	</div>
 <% end %>

@@ -3,6 +3,7 @@ class UsersController < ApplicationController
   def show
     @user = User.find(params[:id])
     @employees = @user.employees
+    @feed_items = Roster.where(:begin_date => Time.now.strftime("%Y-%m-%d"))
     #@shift = @user.shifts
   end
       
@@ -19,7 +20,9 @@ class UsersController < ApplicationController
       	redirect_to @user
          # Handle a successful save.
       else
-          render 'new'     
+          render 'new'    
       end
     end
+
+    
   end
