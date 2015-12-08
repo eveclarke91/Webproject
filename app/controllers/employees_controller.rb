@@ -91,11 +91,7 @@
               redirect_to root_url if @employee.nil?
             end
 
- private
-
-    def employee_params
-      params.require(:employee).permit(:name, :address, :number, :rate_of_pay)
-    end
+ 
       
 
 

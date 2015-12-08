@@ -4,7 +4,10 @@ class AddUserForeginKeyToHolidays < ActiveRecord::Migration
 
   end
 
+
   def self.down
+
+  	
     remove_foreign_key :holidays, :users
 
 end
