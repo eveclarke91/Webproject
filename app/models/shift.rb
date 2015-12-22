@@ -4,12 +4,11 @@ class Shift < ActiveRecord::Base
   validates :user_id, presence: true
   validates :total_hours, presence: true, numericality: true
   validates :start_time, presence: true
-  validates :finish_time, presence: true
+  validates :finish_time, presence: 
 
- #before :save, :set_fullshift
-#
-  #def set_fullshift
-    #fullshift = "#{start_time} #{finish_time}"
-  #end
+  def fullshift
+    "#{self.start_time} to #{self.finish_time}"
+  end
+
 end
 
