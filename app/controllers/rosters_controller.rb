@@ -1,5 +1,8 @@
 class RostersController < ApplicationController
 	before_action :logged_in_user, only: [:create, :destroy, :view, :update]
+  before_action :check_roster_exists, only: [:create]
+  before_action :check_roster_exists_update, only: [:update]
+
 
       def new
         @roster = Roster.new
@@ -54,7 +57,40 @@ class RostersController < ApplicationController
     params.require(:roster).permit(:begin_date, :employee_id, :shift_id)
    end
 
+   def check_roster_exists
+    @roster = Roster.where(:begin_date => params[:roster][:begin_date], :employee_id => params[:roster][:employee_id])
+    @holiday = Holiday.where("start_date <= ?", params[:roster][:begin_date]).where("finish_date >= ?", params[:roster][:begin_date]).where(:employee_id => params[:roster][:employee_id])
+    if !@roster.blank?
+      redirect_to (:back) 
+      flash[:danger] = "Already Working This Day!"
+    end
+    if !@holiday.blank?
+      redirect_to (:back) 
+      flash[:danger] = "Employee is on Holiday!"
+    end
+  end
 
+  def check_roster_exists_update
+    @stored_roster = Roster.find(params[:id])
+    if @stored_roster.begin_date.to_s != (params[:roster][:begin_date]) #updating roster for differnt day Check not working on new day.
+      @roster = Roster.where(:begin_date => params[:roster][:begin_date], :employee_id => params[:roster][:employee_id])
+      if !@roster.blank?
+        redirect_to (:back) 
+        flash[:danger] = "Already Working This Day!"
+      end
+    else #updating roster for same day Check shift id.
+      @roster = Roster.where(:begin_date => params[:roster][:begin_date], :employee_id => params[:roster][:employee_id], :shift_id => params[:roster][:shift_id])
+      if !@roster.blank?
+        redirect_to (:back) 
+        flash[:danger] = "Already Working This Shift!"
+      end
+    end
+    @holiday = Holiday.where("start_date <= ?", params[:roster][:begin_date]).where("finish_date >= ?", params[:roster][:begin_date]).where(:employee_id => params[:roster][:employee_id])
+    if !@holiday.blank?
+      redirect_to (:back) 
+      flash[:danger] = "Employee is on Holiday!"
+    end
+  end
 
      
          def destroy
